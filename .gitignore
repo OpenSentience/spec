@@ -1,0 +1,91 @@
+# -------------------------------------------------------
+# OpenSentience™ Specification - .gitignore
+# Maintained by DeepSweep.ai, Inc.
+# -------------------------------------------------------
+
+# --- Core Directories ---
+__pycache__/
+.env
+.venv/
+.env.*
+venv/
+build/
+dist/
+*.egg-info/
+*.log
+*.tmp
+
+# --- OS-specific ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# --- Editor-specific ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
+
+# --- Python SDK-related (future submodules) ---
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.cache/
+.tox/
+nosetests.xml
+coverage.xml
+
+# --- Node/JS SDK-related (future submodules) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# --- Temporary & generated files ---
+*.out
+*.pid
+*.seed
+*.bak
+*.old
+*.log
+*.tmp
+*.swp
+*.swo
+
+# --- Spec & Docs ---
+/docs/_build/
+/spec/generated/
+/rfcs/drafts/
+
+# --- Secrets (never commit) ---
+*.key
+*.pem
+*.crt
+*.cert
+*.json
+credentials.*
+secrets.*
+.env.local
+.env.production
+.env.development
+
+# --- OS & Git Metadata ---
+*.~lock.*
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+*.iml
+.gitignore
+.gitattributes
