@@ -1,13 +1,30 @@
-{
-  "latency_ms": Integer,            # REQUIRED. Total time for the inference in milliseconds.
-  "input_hash": String,             # OPTIONAL. A cryptographic hash (e.g., "sha256:...") of the input payload.
-  "output_hash": String,            # OPTIONAL. A cryptographic hash of the output payload.
-  "token_counts": {                 # OPTIONAL. For language models.
-    "input": Integer,
-    "output": Integer
-  },
-  "confidence_score": Float,        # OPTIONAL. A score between 0.0 and 1.0 representing the model's confidence.
-  "custom_metrics": {               # OPTIONAL. A key-value map for any other model-specific metrics.
-    "metric_name": Number | String
-  }
-}
+type: object
+properties:
+  latency_ms:
+    type: integer
+    description: "REQUIRED. Total time for the inference in milliseconds."
+  input_hash:
+    type: string
+    description: "OPTIONAL. A cryptographic hash (e.g., 'sha256:...') of the input payload."
+  output_hash:
+    type: string
+    description: "OPTIONAL. A cryptographic hash of the output payload."
+  token_counts:
+    type: object
+    description: "OPTIONAL. For language models."
+    properties:
+      input:
+        type: integer
+      output:
+        type: integer
+  confidence_score:
+    type: number
+    format: float
+    description: "OPTIONAL. A score between 0.0 and 1.0 representing the model's confidence."
+  custom_metrics:
+    type: object
+    description: "OPTIONAL. A key-value map for any other model-specific metrics."
+    additionalProperties:
+      type: [ "number", "string" ]
+required:
+  - latency_ms
