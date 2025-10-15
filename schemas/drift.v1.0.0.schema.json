@@ -1,11 +1,41 @@
-{
-  "feature_name": String,           # REQUIRED. The name of the feature or output being monitored (e.g., "user_age", "model_output_confidence").
-  "baseline_id": String,            # REQUIRED. An identifier for the baseline dataset used for comparison.
-  "drift_type": String,             # REQUIRED. Enum: "feature" or "prediction".
-  "statistical_test": {             # REQUIRED. Details of the statistical test performed.
-    "name": String,                 # REQUIRED. Enum: "jensen_shannon_divergence", "kolmogorov_smirnov", "population_stability_index". [5, 6]
-    "value": Float,                 # REQUIRED. The calculated value from the statistical test.
-    "threshold": Float,             # REQUIRED. The threshold at which drift was declared.
-    "p_value": Float                # OPTIONAL. The p-value from the statistical test, if applicable.
-  }
-}
+type: object
+properties:
+  feature_name:
+    type: string
+    description: "REQUIRED. The name of the feature or output being monitored (e.g., 'user_age', 'model_output_confidence')."
+  baseline_id:
+    type: string
+    description: "REQUIRED. An identifier for the baseline dataset used for comparison."
+  drift_type:
+    type: string
+    description: "REQUIRED. Enum: 'feature' or 'prediction'."
+    enum: [ "feature", "prediction" ]
+  statistical_test:
+    type: object
+    description: "REQUIRED. Details of the statistical test performed."
+    properties:
+      name:
+        type: string
+        description: "REQUIRED. Enum: 'jensen_shannon_divergence', 'kolmogorov_smirnov', 'population_stability_index'."
+        enum: [ "jensen_shannon_divergence", "kolmogorov_smirnov", "population_stability_index" ]
+      value:
+        type: number
+        format: float
+        description: "REQUIRED. The calculated value from the statistical test."
+      threshold:
+        type: number
+        format: float
+        description: "REQUIRED. The threshold at which drift was declared."
+      p_value:
+        type: number
+        format: float
+        description: "OPTIONAL. The p-value from the statistical test, if applicable."
+    required:
+      - name
+      - value
+      - threshold
+required:
+  - feature_name
+  - baseline_id
+  - drift_type
+  - statistical_test
