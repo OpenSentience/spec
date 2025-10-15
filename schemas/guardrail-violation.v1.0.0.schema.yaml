@@ -1,0 +1,23 @@
+type: object
+properties:
+  policy_id:
+    type: string
+    description: "REQUIRED. A unique identifier for the policy that was violated."
+  violation_type:
+    type: string
+    description: "REQUIRED. A high-level category for the violation. Enum: 'toxicity', 'pii_leakage', 'bias', 'factual_inconsistency', 'custom'."
+    enum: [ "toxicity", "pii_leakage", "bias", "factual_inconsistency", "custom" ]
+  severity:
+    type: string
+    description: "REQUIRED. The severity of the violation. Enum: 'info', 'low', 'medium', 'high', 'critical'."
+    enum: [ "info", "low", "medium", "high", "critical" ]
+  details:
+    type: string
+    description: "OPTIONAL. A human-readable description of the violation."
+  violated_text:
+    type: string
+    description: "OPTIONAL. The specific text or output that triggered the violation."
+required:
+  - policy_id
+  - violation_type
+  - severity
