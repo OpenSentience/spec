@@ -1,0 +1,13 @@
+{
+  "latency_ms": Integer,            # REQUIRED. Total time for the inference in milliseconds.
+  "input_hash": String,             # OPTIONAL. A cryptographic hash (e.g., "sha256:...") of the input payload.
+  "output_hash": String,            # OPTIONAL. A cryptographic hash of the output payload.
+  "token_counts": {                 # OPTIONAL. For language models.
+    "input": Integer,
+    "output": Integer
+  },
+  "confidence_score": Float,        # OPTIONAL. A score between 0.0 and 1.0 representing the model's confidence.
+  "custom_metrics": {               # OPTIONAL. A key-value map for any other model-specific metrics.
+    "metric_name": Number | String
+  }
+}
